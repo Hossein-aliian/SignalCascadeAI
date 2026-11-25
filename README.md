@@ -2,49 +2,55 @@
 
 ### Financial Intelligence & Predictive Analytics for the Iranian Stock Market
 
-**SignalCascadeAI** is a proprietary financial machine learning system independently designed and developed for quantitative analysis of the Iranian stock market.
+**SignalCascadeAI** is an independently developed, proprietary financial machine learning system focused on quantitative research and predictive signal analysis in the Iranian stock market.
 
-The project focuses on identifying market patterns associated with smart-money activity and recognizing equities with the potential for significant price appreciation.
+The project investigates market patterns associated with smart-money activity and seeks to identify equities that may exhibit significant price appreciation. It brings together financial data engineering, sequential deep learning, ensemble machine learning, specialized learning strategies, and leakage-resistant temporal evaluation.
 
-It combines sequential deep learning, ensemble-based machine learning, customized learning optimization, and temporal validation methodologies within a multi-stage predictive research system.
+> **Public technical showcase:** This repository documents selected research areas, engineering approaches, and reported evaluation outcomes. It does not contain the production source code, trained models, real market data, or proprietary implementation details.
+
+---
+
+## Table of Contents
+
+- [Project Overview](#project-overview)
+- [Technical Approach](#technical-approach)
+- [Temporal Validation & Information Integrity](#temporal-validation--information-integrity)
+- [Reported Evaluation Results](#reported-evaluation-results)
+- [Engineering Focus](#engineering-focus)
+- [Technology Stack](#technology-stack)
+- [Documentation](#documentation)
+- [Repository Scope & Confidentiality](#repository-scope--confidentiality)
+- [Author](#author)
 
 ---
 
 ## Project Overview
 
-Financial markets are dynamic, non-stationary environments where identifying meaningful price movements requires more than conventional predictive modeling.
+Financial markets are dynamic and non-stationary. Developing useful predictive systems in this environment requires careful treatment of temporal information, imbalanced outcomes, changing market behavior, and the practical cost of incorrect predictions.
 
-SignalCascadeAI was developed to investigate market behavior, recognize potentially significant accumulation-related patterns, and generate data-driven predictive signals.
+SignalCascadeAI was designed as a multi-stage research system to:
 
-The system emphasizes:
+- Analyze financial time-series and market behavior.
+- Investigate patterns associated with accumulation and smart-money activity.
+- Identify potentially significant price movements.
+- Combine complementary machine learning models.
+- Evaluate predictive signals through temporally disciplined validation and backtesting.
 
-- Financial time-series analysis
-- Sequential deep learning and recurrent neural networks
-- Ensemble-based predictive modeling
-- Customized learning optimization strategies
-- Magnitude-aware predictive modeling
-- Leakage-resistant temporal validation
-- Predictive signal evaluation and backtesting
-
-The system is specifically designed around the characteristics and constraints of the Iranian stock market.
+The system is tailored to the data characteristics and market structure of the Iranian stock market.
 
 ---
 
-## Technical Architecture & Research Areas
+## Technical Approach
 
-SignalCascadeAI incorporates multiple machine learning methodologies, with particular emphasis on sequential modeling and predictive integration.
+The project combines several machine learning paradigms rather than depending on a single estimator.
 
-### 1. Sequential Deep Learning
+### Sequential deep learning
 
-**GRU-Based Financial Time-Series Modeling**
+The system uses **PyTorch-based GRU networks** for sequential financial time-series modeling. The recurrent modeling component incorporates customized architectural configurations and task-specific hyperparameter optimization.
 
-The project incorporates Gated Recurrent Unit (GRU) networks through PyTorch for sequential financial data modeling.
+### Ensemble learning
 
-The GRU component is supported by customized architectural configurations and task-specific optimization strategies developed for the characteristics of financial time-series data.
-
-### 2. Ensemble Machine Learning
-
-The system incorporates multiple learning paradigms, including:
+The modeling ecosystem includes:
 
 - XGBoost
 - LightGBM
@@ -53,48 +59,43 @@ The system incorporates multiple learning paradigms, including:
 - Meta-model learning
 - Ensemble-based predictive integration
 
-The objective is to combine complementary predictive capabilities rather than rely on a single modeling approach.
+The purpose of this combination is to leverage complementary modeling capabilities across different representations of financial data.
 
-### 3. Customized Learning Optimization
+### Specialized learning strategies
 
-Specialized learning strategies have been developed to address challenges associated with financial prediction, including:
+The research includes high-level approaches designed for the asymmetric nature of financial prediction tasks:
 
 - Customized convex weighting strategies
 - Asymmetric loss optimization
 - Magnitude-aware regression
 - Decision-oriented predictive integration
 
-These approaches address the different characteristics and operational costs of prediction errors in financial signal-generation tasks.
-
-Implementation details and proprietary optimization methodologies are intentionally withheld.
+These strategies are intended to improve the prioritization of potentially meaningful signals while controlling false-positive predictions. Their formulas, parameters, and implementation details are proprietary and are not disclosed in this repository.
 
 ---
 
-## Temporal Integrity & Leakage-Resistant Validation
+## Temporal Validation & Information Integrity
 
-Preventing information leakage is a central engineering requirement throughout SignalCascadeAI.
+Temporal integrity is treated as a system-wide engineering requirement.
 
-The validation methodology incorporates several temporal integrity mechanisms:
+The validation methodology includes:
 
-- Out-of-Fold (OOF) training and prediction workflows
-- Explicit temporal shifting
-- Shift-based information alignment
-- Purge-window mechanisms aligned with the decision horizon
-- Leakage-aware feature engineering
-- Temporal validation across predictive modeling stages
-- OOF-based ensemble evaluation and backtesting
+- Out-of-Fold (OOF) training and prediction workflows.
+- Explicit temporal shifting and Shift-1 information alignment.
+- Purge-window mechanisms aligned with the decision horizon.
+- Leakage-aware feature engineering.
+- Temporal validation across modeling stages.
+- OOF-based ensemble evaluation and backtesting.
 
-The architecture is designed to preserve the separation between information available at prediction time and information that becomes available in the future.
-
-Leakage prevention is treated as a system-wide engineering constraint rather than an isolated validation procedure.
+These practices are intended to preserve the boundary between information available at prediction time and information that becomes available later. The methodology is described at a conceptual level; implementation-specific split logic and temporal parameters remain private.
 
 ---
 
-## Performance & Evaluation
+## Reported Evaluation Results
 
-The following results represent reported internal evaluation outcomes from the project's model development and backtesting workflows.
+The following figures are reported from the project's internal model evaluation and backtesting workflows.
 
-### Model-Level OOF Evaluation
+### Model-level OOF ROC-AUC
 
 | Model | OOF ROC-AUC |
 |---|---:|
@@ -104,97 +105,94 @@ The following results represent reported internal evaluation outcomes from the p
 | GRU | 0.8331 |
 | Meta-model | 0.8685 |
 
-### Ensemble Evaluation
+### Ensemble evaluation
 
-| Metric | Result |
+| Evaluation | Result |
 |---|---:|
-| Final Stacker AUC — Phase 1 | **0.8973** |
+| Final Stacker — Phase 1 AUC | **0.8973** |
 
-### OOF-Based Backtesting Results
+### OOF-based backtesting
 
-| Metric | Result |
+| Metric | Reported result |
 |---|---:|
 | Precision@14 | 0.9077 |
 | Recall@14 | 0.4783 |
 | Average Return After Signal | 0.3461 |
 | Production Success Rate | 0.81 |
 
-**Evaluation Notes**
+**Interpretation and limitations**
 
-- Model-level results are reported using Out-of-Fold evaluation.
-- Ensemble evaluation includes OOF-based predictive outputs.
-- Backtesting is performed using OOF-based predictions.
-- Reported results are historical internal evaluation outcomes, not guarantees of future performance.
-- Return-related metrics and production success rates should be interpreted according to their evaluation definitions and applicable market conditions.
+- Model-level ROC-AUC values are reported from Out-of-Fold evaluation.
+- Ensemble evaluation uses OOF-based predictive outputs.
+- Backtesting was performed using OOF-based predictions.
+- These are historical internal results, not guarantees of future performance.
+- Return and production-success figures should not be interpreted beyond their underlying metric definitions. Their units and calculation conventions are not specified in this public summary.
+- Results may vary with market regime, data coverage, execution assumptions, and evaluation methodology.
+
+For additional context, see [Performance Evaluation](docs/performance-evaluation.md).
 
 ---
 
-## Engineering Challenges
+## Engineering Focus
 
-Developing predictive systems for financial markets introduces challenges beyond conventional machine learning tasks.
+Key engineering challenges considered during development include:
 
-SignalCascadeAI addresses research and engineering challenges involving:
+**Market non-stationarity** — modeling behavior that can change across market regimes and time periods.
 
-**Market Non-Stationarity**
+**Class imbalance** — handling uneven outcome distributions without allowing aggregate metrics to obscure weaker cases.
 
-Financial market behavior changes over time, requiring careful temporal modeling and evaluation.
+**False-positive control** — accounting for the operational cost of incorrect predictive signals.
 
-**Class Imbalance**
+**Magnitude-aware prediction** — distinguishing potentially meaningful price movements from less significant outcomes.
 
-Uneven distributions of market outcomes require specialized learning and evaluation considerations.
-
-**False-Positive Control**
-
-Incorrect predictive signals can have significant operational consequences, making error-cost awareness an important part of system design.
-
-**Prediction Magnitude**
-
-Identifying potentially successful market movements also requires considering the magnitude of expected price behavior.
-
-**Temporal Information Integrity**
-
-Preserving prediction-time information boundaries is essential for meaningful financial model evaluation.
+**Temporal information integrity** — maintaining prediction-time information boundaries throughout feature engineering, training, evaluation, and backtesting.
 
 ---
 
 ## Technology Stack
 
-| Domain | Technologies |
+| Area | Technologies |
 |---|---|
 | Programming | Python |
-| Data Processing | NumPy, Pandas |
-| Deep Learning | PyTorch, GRU |
-| Machine Learning | Scikit-learn |
-| Gradient Boosting | XGBoost, LightGBM, CatBoost |
-| Statistical Evaluation | ROC-AUC, MAE, Feature Selection |
+| Data processing | NumPy, Pandas |
+| Deep learning | PyTorch, GRU |
+| Machine learning | Scikit-learn |
+| Gradient boosting | XGBoost, LightGBM, CatBoost |
+| Evaluation | ROC-AUC and task-specific backtesting metrics |
 
 ---
 
-## Project Status
+## Documentation
 
-SignalCascadeAI is an independently developed proprietary research and engineering project.
+The following documents provide additional context about the project's scope and engineering work:
 
-This repository serves as a public technical showcase documenting selected research areas, engineering contributions, and reported evaluation outcomes.
-
-The production implementation and proprietary source code are not publicly available.
+| Document | Description |
+|---|---|
+| [Project Overview](docs/project-overview.md) | Motivation, objectives, and project scope |
+| [System Capabilities](docs/system-capabilities.md) | High-level capabilities and research areas |
+| [Technical Contributions](docs/technical-contributions.md) | Summary of selected technical approaches |
+| [Validation Methodology](docs/validation-methodology.md) | Temporal validation and leakage-resistant evaluation principles |
+| [Performance Evaluation](docs/performance-evaluation.md) | Reported metrics and evaluation context |
+| [Engineering Challenges](docs/engineering-challenges.md) | Main research and engineering challenges |
+| [Confidentiality](docs/confidentiality.md) | Intellectual property and disclosure boundaries |
 
 ---
 
-## Intellectual Property & Confidentiality
+## Repository Scope & Confidentiality
 
-SignalCascadeAI contains proprietary algorithms, architectural decisions, optimization methodologies, and implementation details developed independently.
+This repository is a **public technical showcase**, not the production software distribution.
 
-To protect the project's intellectual property, this repository does not disclose:
+It intentionally excludes:
 
-- Proprietary source code or executable components
-- Internal module implementations
-- Custom mathematical formulations
-- Model configurations and optimization parameters
-- Feature definitions and transformation logic
-- Label-generation and decision-making methodologies
-- Internal data structures and operational workflows
+- Proprietary source code and executable components.
+- Trained model artifacts and private datasets.
+- Internal module implementations and system orchestration.
+- Custom mathematical formulations and optimization parameters.
+- Feature definitions, transformations, and selection logic.
+- Label-generation and decision-making methodologies.
+- Private configurations, logs, and operational workflows.
 
-All materials published here are intended for informational and professional portfolio purposes.
+The published material is intended for professional, research, and portfolio presentation. No part of this repository should be treated as a reproducible implementation of the production system.
 
 **All rights reserved.**
 
@@ -202,11 +200,11 @@ All materials published here are intended for informational and professional por
 
 ## Author
 
-**Hossein Alian**
-
+**Hossein Alian**  
 Financial Machine Learning | Quantitative Research | AI Systems Engineering
 
-[LinkedIn](https://www.linkedin.com/in/hossein-alian-465b5a224/) · [GitHub](https://github.com/Hossein-aliian)
+- [LinkedIn](https://www.linkedin.com/in/hossein-alian-465b5a224/)
+- [GitHub](https://github.com/Hossein-aliian)
 
 ---
 
